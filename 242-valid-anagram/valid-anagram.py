@@ -14,8 +14,4 @@ class Solution(object):
             countS[s[index]]=1+countS.get(s[index],0)
             countT[t[index]]=1+countT.get(t[index],0)
         
-        for c in countS:
-            if countS[c]!=countT.get(c,0):
-                return False
-        
-        return True
+        return countS==countT

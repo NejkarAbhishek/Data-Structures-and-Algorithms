@@ -4,23 +4,17 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        left,right=0,len(s)-1
-
-        while left < right:
-            while left < right and not self.alpha_Num(s[left]):
-                left+=1
-            
-            while right > left and not self.alpha_Num(s[right]):
-                right-=1
-
-            if s[left].lower()!=s[right].lower():
-                return False    
-            
-            left,right=left+1,right-1
-        
+        L, R=0,len(s)-1
+        while L<R:
+            if not s[L].isalnum():
+                L+=1
+                continue
+            elif not s[R].isalnum():
+                R-=1
+                continue
+            else:
+                if s[L].lower()!=s[R].lower():
+                    return False
+            L+=1
+            R-=1
         return True
-    
-    def alpha_Num(self,c):
-        return (ord('A') <= ord(c) <= ord('Z') or
-                ord('a') <= ord(c) <= ord('z') or
-                ord('0') <= ord(c) <= ord('9'))

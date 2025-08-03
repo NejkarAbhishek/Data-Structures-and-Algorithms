@@ -11,21 +11,22 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[List[int]]
         """
-        q = deque()
-        levels=[]
+        q = collections.deque()
 
         if root:
             q.append(root)
 
-        while q:
-            qLen = len(q)
-            level=[]
-            for i in range(qLen):
-                node = q.popleft()
-                if node:
-                    level.append(node.val)
-                    q.append(node.left)
-                    q.append(node.right)
-            if level:
-                levels.append(level)
-        return levels
+        res=[]
+        while len(q) > 0:
+            curList=[]
+            for i in range(len(q)):
+                curr=q.popleft()
+                curList.append(curr.val)
+                if curr.left:
+                    q.append(curr.left)
+                if curr.right:
+                    q.append(curr.right)
+            res.append(curList)
+
+        return res
+

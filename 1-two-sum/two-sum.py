@@ -5,14 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        
-        map = {}
+        map={}
 
-        for index,value in enumerate(nums):
-            diff=target-value
-            if diff in map:
-                return [map[diff],index]
+        for index, value in enumerate(nums):
+            if target-nums[index] in map:
+                return [map[target-nums[index]],index]
             map[value]=index
-        
-        
-            
+        return [-1,-1]

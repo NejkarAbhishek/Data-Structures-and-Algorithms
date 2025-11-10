@@ -4,17 +4,19 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        L, R=0,len(s)-1
-        while L<R:
-            if not s[L].isalnum():
-                L+=1
-                continue
-            elif not s[R].isalnum():
-                R-=1
-                continue
+        
+        l=0
+        r=len(s)-1
+
+        while l < r:
+            if not s[l].isalnum():
+                l+=1
+            elif not s[r].isalnum():
+                r-=1
             else:
-                if s[L].lower()!=s[R].lower():
+                if s[l].lower()!=s[r].lower():
                     return False
-            L+=1
-            R-=1
+                l+=1
+                r-=1
+        
         return True
